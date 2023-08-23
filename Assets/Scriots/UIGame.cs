@@ -12,14 +12,13 @@ public class UIGame : MonoBehaviour
 
     public void SetPlayerText(Player currentPlayer)
     {
-        if (currentPlayer == Player.Black)
+        //switch case 
+        topText.text = currentPlayer switch
         {
-            topText.text = "Black is Turn  <sprite name=ChipBlackUp>";
-        }
-        else if (currentPlayer == Player.White)
-        {
-            topText.text = "White is Turn  <sprite name=ChipWhiteUp>";
-        }
+            Player.Black => "Black is Turn  <sprite name=ChipBlackUp>",
+            Player.White => "White is Turn  <sprite name=ChipWhiteUp>",
+            _ => topText.text
+        };
     }
 
     public void SetSkippedText(Player skippedPlayer)
@@ -42,7 +41,7 @@ public class UIGame : MonoBehaviour
     private IEnumerator ScaleDown(RectTransform rect)
     {
         rect.LeanScale(Vector3.zero, 0.2f);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.2f);//хардкод
         rect.gameObject.SetActive(false);
     }
 
@@ -73,18 +72,13 @@ public class UIGame : MonoBehaviour
 
     public void SetWinnerText(Player winner)
     {
-        switch (winner)
+        winnerText.text = winner switch
         {
-            case Player.Black:
-                winnerText.text = "Black Won!";
-                break;
-            case Player.White:
-                winnerText.text = "White Won!";
-                break;
-            case Player.None:
-                winnerText.text = "It is a Tie!";
-                break;
-        }
+            Player.Black => "Black Won!",
+            Player.White => "White Won!",
+            Player.None => "It is a Tie!",
+            _ => winnerText.text
+        };
     }
 
     public IEnumerator ShowEndScreen()

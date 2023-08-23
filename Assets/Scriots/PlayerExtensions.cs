@@ -4,15 +4,12 @@ namespace Scriots
     {
         public static Player Opponent(this Player player)
         {
-            if (player == Player.Black)
+            return player switch//с помощью switch case более читаемо
             {
-                return Player.White;
-            }
-            else if (player == Player.White)
-            {
-                return Player.Black;
-            }
-            return Player.None;
+                Player.Black => Player.White,
+                Player.White => Player.Black,
+                _ => Player.None
+            };
         }
     }
 }

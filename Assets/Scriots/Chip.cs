@@ -15,7 +15,7 @@ public class Chip : MonoBehaviour
     {
         if (up == Player.Black)
         {
-            animator.Play("BlackToWhite");
+            animator.Play("BlackToWhite");//можно закешировать строку, не критично
             up = Player.White;
         }
         else
