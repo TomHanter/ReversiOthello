@@ -1,5 +1,6 @@
 namespace Scriots
 {
+    //Почему не использовать Vector2Int ?
     public class Position
     {
         public int Row { get; }
